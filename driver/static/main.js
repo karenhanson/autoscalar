@@ -29,15 +29,17 @@ $(function() {
   function init_launch_image_ui() {
     var name = $("#run-image-select").val();
 
-    $("#creation_date").text(new Date(all_images[name].created).toLocaleString());
-
-    $("#image_download").attr("href", "/archive/download_image/" + name);
-    $("#cont_download").attr("href", "/archive/download_container/" + name);
-    $("#warcs_download").attr("href", "/archive/download_warcs/" + name);
-    //$("#image_download").text(name + ".tar.gz");
-
-    $("#image_start_url").text(all_images[name].url);
-    $(".image_size").text(bytesToSize(all_images[name].size));
+    if (name) {
+      $("#creation_date").text(new Date(all_images[name].created).toLocaleString());
+      
+      $("#image_download").attr("href", "/archive/download_image/" + name);
+      $("#cont_download").attr("href", "/archive/download_container/" + name);
+      $("#warcs_download").attr("href", "/archive/download_warcs/" + name);
+      //$("#image_download").text(name + ".tar.gz");
+      
+      $("#image_start_url").text(all_images[name].url);
+      $(".image_size").text(bytesToSize(all_images[name].size));
+    }
   }
 
   init_launch_image_ui();
